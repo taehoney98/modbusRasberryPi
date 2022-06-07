@@ -1,4 +1,4 @@
-from EasyModbusPy.easymodbus.modbusClient import *
+from easymodbus.modbusClient import *
 import time
 import schedule
 import random
