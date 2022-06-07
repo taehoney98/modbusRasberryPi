@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title> 값 관찰</title>
+        <meta http-equiv='refresh' content='5' >
+    </head>
+    <body>
+    <h1>  Digital coils value </h1>
+        
+    {% if coils %}
+        <ol>
+            {% for  index, boolean_value  in coils.items%}
+            <p>
+                <li>
+                    value  is {{boolean_value}} 
+                </li>
+            </p>
+            {%endfor%}
+        </ol>
+    {%else %}
+        <p>내용이 없습니다.</p>
+    {%endif%}
+    
+    <h1> Analog registers value </h1>
+    
+    {% if registers %}
+        <ol>
+            {%for register_index , register_value in registers.items%}
+                <li>
+                <p>value is <output name="result" for="num">  {{register_value}}</output>  </p>
+                </li>
+            {%endfor%}
+        </ol>
+    {%else %}
+        <p>내용이 없습니다.</p>
+    {%endif%}
+    
+    </body>
+</html>
