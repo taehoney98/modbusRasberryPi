@@ -4,7 +4,7 @@ from modbusRasberryPi.models import Digital ,  Analog
 import random
 # Create your views here.
 
-modbus_client=ModbusClient('192.168.0.60',502)
+modbus_client=ModbusClient('192.168.0.39',502) # pc 외부 ip:211.226.15.97   AWS 내부 ip: 172.26.10.227 AWS외부 ip:3.38.3.27  
 modbus_client.parity = Parity.even #짝수 패리티
 modbus_client.unitidentifier = 1 #slave id 
 modbus_client.baudrate = 9600  #전송속도 보오 레이트
@@ -27,9 +27,9 @@ def index(request):
     coils = modbus_client.read_coils(0, 10)
     holding_registers=modbus_client.read_holdingregisters(0,10)
 
-    random_number=random.randint(0,10)    
+    
     for i in range(10):
-        for index in range(random_number):
+        for index in range(random.randrange(0,10)):
             modbus_client.write_single_coil(index, not coils[index])
             item =Digital.objects.get(id=index)
             item.coil_value = not coils[index]
