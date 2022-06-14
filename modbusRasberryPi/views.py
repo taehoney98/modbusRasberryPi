@@ -5,7 +5,7 @@ from modbusRasberryPi.models import Digital ,  Analog
 import random
 # Create your views here.
 
-modbus_client=ModbusClient('192.168.0.39',502) # pAWS외부 ip:3.38.3.27  
+modbus_client=ModbusClient('192.168.0.39',502) # AWS외부 ip:3.38.3.27  
 modbus_client.parity = Parity.even #짝수 패리티
 modbus_client.unitidentifier = 1 #slave id 
 modbus_client.baudrate = 9600  #전송속도 보오 레이트
