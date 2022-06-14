@@ -1,10 +1,11 @@
+from django.http import HttpResponse
 from django.shortcuts import render
-from easymodbus.modbusClient import *
+from easyModbusTCP.easymodbus.modbusClient import *
 from modbusRasberryPi.models import Digital ,  Analog
 import random
 # Create your views here.
 
-modbus_client=ModbusClient('192.168.0.39',502) # pc 외부 ip:211.226.15.97   AWS 내부 ip: 172.26.10.227 AWS외부 ip:3.38.3.27  
+modbus_client=ModbusClient('192.168.0.39',502) # pAWS외부 ip:3.38.3.27  
 modbus_client.parity = Parity.even #짝수 패리티
 modbus_client.unitidentifier = 1 #slave id 
 modbus_client.baudrate = 9600  #전송속도 보오 레이트
@@ -49,4 +50,5 @@ def index(request):
     indexRegisters =dict(enumerate(holding_registers))
     
     context={'coils': indexCoils ,'registers': indexRegisters }
+    return HttpResponse('test')
     return render(request,'modbusRasberryPi/list.html',context)
