@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 from easyModbusTCP.easymodbus.modbusClient import *
 from modbusRasberryPi.models import Digital ,  Analog
@@ -49,6 +48,5 @@ def index(request):
     indexCoils = dict(enumerate(coils))
     indexRegisters =dict(enumerate(holding_registers))
     
-    context={'coils': indexCoils ,'registers': indexRegisters }
-    return HttpResponse('test')
+    context={'coils': indexCoils ,'registers': indexRegisters}
     return render(request,'modbusRasberryPi/list.html',context)
